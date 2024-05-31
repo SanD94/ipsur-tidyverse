@@ -1,3 +1,4 @@
+## Section 3 util functions
 # central moment
 moment <- function(x, d) {
   n <- length(x)
