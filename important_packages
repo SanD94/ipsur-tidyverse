@@ -1,4 +1,11 @@
+# essential libraries
 tidyverse
+patchwork
 timetk
-ggmosaic
+e1071
+viridis --> color palettes for color blindness/deficiency
+
+
+# util libraries
 here
+httpgd
