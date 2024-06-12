@@ -3,8 +3,11 @@ tidyverse
 patchwork
 timetk
 e1071
-distrEx
 viridis --> color palettes for color blindness/deficiency
+
+# demo graphs for distributions
+distrTeach
+TeachingDemos
 
 
 # util libraries
