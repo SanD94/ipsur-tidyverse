@@ -1,4 +1,15 @@
+# essential libraries
 tidyverse
+patchwork
 timetk
-ggmosaic
+e1071
+viridis --> color palettes for color blindness/deficiency
+
+# demo graphs for distributions
+distrTeach
+TeachingDemos
+
+
+# util libraries
 here
+httpgd

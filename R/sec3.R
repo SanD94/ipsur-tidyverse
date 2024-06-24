@@ -1,5 +1,6 @@
 # Chapter 3 -- Data Descriptions
 library(tidyverse)
+library(patchwork)
 library(timetk)
 
 # ggplot equivalance of different plot with default libraries
@@ -66,20 +67,32 @@ Titanic %>%
   geom_bar(stat = "identity")
 
 # simulation of mosaic plot (x axis adjustment needed)
+# TODO: width and height adjustment, big space between bars
 Titanic %>%
   as_tibble() %>%
   group_by(Survived) %>%
   mutate(prob = n / sum(n), w = sum(n)) %>%
   ungroup() %>%
-  mutate(w = w / max(w)) %>%
+  mutate(w = w / sum(n)) %>%
   ungroup() %>%
   ggplot(mapping = aes(x = Survived, y = prob, fill = Class, width = w)) +
   geom_bar(stat = "identity") +
   theme_void()
 
-# using ggmosaic
-Titanic %>%
-  as_tibble() %>%
-  ggplot() +
-  geom_mosaic(aes(x = product(Survived), weight = n, fill = Class), show.legend = FALSE) +
-  theme_mosaic()
+puro_f <- Puromycin %>%
+  ggplot(mapping = aes(x = conc, y = rate)) +
+  geom_point()
+
+atten_f <- attenu %>%
+  ggplot(mapping = aes(x = dist, y = accel)) +
+  geom_point()
+
+puro_f + atten_f
+
+
+# simmilar to spine plot without x axis adjustment
+tibble(
+  region = state.region,
+  division = state.division
+) %>% ggplot(aes(x = region)) +
+  geom_bar(aes(fill = division), position = "fill")
